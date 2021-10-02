@@ -10,8 +10,13 @@ song {
 
 title {
   font-style: italic;
+  padding: 10px;
 }
 
 artist {
   font-weight: bold;
+}
+
+year {
+  padding: 10px;
 }
