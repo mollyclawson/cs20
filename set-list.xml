@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="styles.css"?>
+
+<set-list>
+    <song>
+        <artist>Taylor Swift</artist>
+        <title>Blank Space</title>
+        <genre>pop</genre>
+        <year>2014</year>
+    </song>
+    <song>
+        <artist>Taylor Swift</artist>
+        <title>Wildest Dreams</title>
+        <genre>pop</genre>
+        <year>2014</year>
+    </song>
+    <song>
+        <artist>Taylor Swift</artist>
+        <title>Look What You Made Me Do</title>
+        <genre>pop</genre>
+        <year>2017</year>
+    </song>
+        <song>
+        <artist>Beyoncé</artist>
+        <title>Halo</title>
+        <genre>pop</genre>
+        <year>2008</year>
+    </song>
+    <song>
+        <artist>ACDC</artist>
+        <title>Back in Black</title>
+        <genre>rock</genre>
+        <year>1980</year>
+    </song>
+    <song>
+        <artist>Fleetwood Mac</artist>
+        <title>Dreams</title>
+        <genre>rock</genre>
+        <year>1977</year>
+    </song>
+    <song>
+        <artist>Queen</artist>
+        <title>Don't Stop Me Now</title>
+        <genre>rock</genre>
+        <year>1979</year>
+    </song>
+    <song>
+        <artist>Elton John</artist>
+        <title>I'm Still Standing</title>
+        <genre>rock</genre>
+        <year>1983</year>
+    </song>
+    <song>
+        <artist>Amy Winehouse</artist>
+        <title>Rehab</title>
+        <genre>soul</genre>
+        <year>2006</year>
+    </song>
+    <song>
+        <artist>Otis Redding</artist>
+        <title>(Sittin' On) The Dock of the Bay</title>
+        <genre>soul</genre>
+        <year>1968</year>
+    </song>
+    <song>
+        <artist>Eminem</artist>
+        <title>Lose Yourself</title>
+        <genre>rap</genre>
+        <year>2002</year>
+    </song>
+    <song>
+        <artist>Megan Thee Stallion</artist>
+        <title>Savage</title>
+        <genre>rap</genre>
+        <year>2020</year>
+    </song>
+</set-list>

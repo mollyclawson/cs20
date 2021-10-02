@@ -1,0 +1,17 @@
+set-list {
+  background-color: #d3d3d3;
+}
+
+song {
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+title {
+  font-style: italic;
+}
+
+artist {
+  font-weight: bold;
+}
