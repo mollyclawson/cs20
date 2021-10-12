@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Joe's Hotdogs</title>
+        
+        <style type='text/css'>
+            p {
+                display: inline; 
+                width: 100px;
+            
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Joe's Hotdogs</h1>
+        <div class="prices">
+            <div>
+                <p>Hot Dog Quantity: </p>
+                <p id='num-hotdogs'>0</p>
+                <p>Hot Dog Price: </p>
+                <p id='hotdogs-total'>0</p>
+            </div>
+            <div>
+                <p>Fries Quantity: </p>
+                <p id='num-fries'>0</p>
+                <p>Fries Price: </p>
+                <p id='fries-total'>0</p>
+            </div>
+            <div>
+                <p>Drinks Quantity: </p>
+                <p id='num-drinks'>0</p>
+                <p>Drinks Price: </p>
+                <p id='drinks-total'>0</p>
+            </div>
+            <div>
+                <p id='discount-label'></p>
+                <p id='discount'></p>
+            </div>
+            <div>
+                <p>Subtotal:</p>
+                <p id='subtotal'>0</p>
+            </div>
+            <div>
+                <p>Tax:</p>
+                <p id='tax'>0</p>
+            </div>
+            <div>
+                <p>Total:</p>
+                <p id='total'>0</p>
+            </div>
+
+
+        </div>
+
+        <script language="javascript">
+
+            hotdogs = prompt("How many hot dogs would you like?");
+            fries = prompt("How many orders of french fries would you like?");
+            drinks = prompt("How many drinks would you like?");
+
+            hotdogs = parseInt(hotdogs);
+            fries = parseInt(fries);
+            drinks = parseInt(drinks);
+
+            // display the quantities of each item
+            document.getElementById('num-hotdogs').innerHTML = hotdogs;
+            document.getElementById('num-fries').innerHTML = fries;
+            document.getElementById('num-drinks').innerHTML = drinks;
+
+            // display the total price of each item
+            document.getElementById('hotdogs-total').innerHTML = (hotdogs * 3.75);
+            document.getElementById('fries-total').innerHTML = (fries * 2);
+            document.getElementById('drinks-total').innerHTML = (drinks * 1.5);
+
+            subtotal = (3.75 * hotdogs) + (2 * fries) + (1.5 * drinks);
+
+            // calculate and display the discount
+            if (subtotal >= 20) {
+                discount = subtotal *.1;
+                subtotal -= discount;
+                discount = discount.toFixed(2);
+                document.getElementById('discount-label').innerHTML = 'Discount:';
+                document.getElementById('discount').innerHTML = discount;
+            }
+            
+            // round and display the subtotal
+            subtotal = subtotal.toFixed(2);
+            document.getElementById('subtotal').innerHTML = subtotal;
+
+            tax = subtotal * .0625;
+            tax = tax.toFixed(2);
+            document.getElementById('tax').innerHTML = tax;
+
+            subtotal = parseFloat(subtotal);
+            tax = parseFloat(tax);
+            total = subtotal + tax
+            document.getElementById('total').innerHTML = total;
+        </script>
+
+        
+    </body>
+</html>
