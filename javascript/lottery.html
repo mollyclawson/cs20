@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lottery Simulator</title>
+    </head>
+
+    <body>
+        <div>
+            <p id='random-unsorted'>Random pick:</p>
+            <p id='random-nums'>Random pick sorted:</p>
+            <p id='winning-nums'>Winning numbers sorted:</p>
+            <p id='num-matching'>Number matching:</p>
+            <p id='lucky-ball'>Lucky ball does not match</p>
+            <p id='winnings'>Your winnings:</p>
+        </div>
+
+        <script language="javascript">
+            winning = prompt("Enter the winning numbers");
+            winningNums = Array.from(winning.split(" "));
+            
+            winningLucky = winning = prompt("Enter the winning lucky ball number");
+            document.getElementById('winning-nums').innerHTML += " " + winningNums.join(' ') + " lucky " + winningLucky;
+
+            const nums = [];
+            foundNums = false; 
+            // generate random numbers until we have 5 unique numbers
+            while (!foundNums) {
+                for (i = 0; i < 5; i++) {
+                    // get 5 random integers
+                    nums[i] = (Math.ceil(Math.random() * 47))
+                }
+                
+                // sets won't include duplicates
+                 uniqueNums = Array.from(new Set(nums));
+
+                // check if we have 5 unique values
+                if(uniqueNums.length == 5)
+                    foundNums = true;
+            }   
+
+            lucky = (Math.ceil(Math.random() * 17))
+            document.getElementById('random-unsorted').innerHTML += " " + uniqueNums.join(' ') + " lucky " + lucky;                
+            // sort the numbers
+            uniqueNums.sort( function(a, b) {
+                return a - b;
+            });
+            document.getElementById('random-nums').innerHTML += " " + uniqueNums.join(' ') + " lucky " + lucky;
+
+            matching = 0
+            for (i = 0; i < 5; i++) {
+                for (j = 0; j < 5; j++) {
+                    if (uniqueNums[i] == winningNums[j]) 
+                        matching++;
+                }
+            }
+
+            document.getElementById('num-matching').innerHTML += " " + matching;
+            if (lucky == winningLucky) {
+                document.getElementById('lucky-ball').innerHTML = "Lucky ball matches";
+            }
+
+            switch(matching) {
+                case 5:
+                    if(lucky == winningLucky) {
+                        x = "$7,000 a WEEK for LIFE"
+                        break;
+                    }
+                    x = "$25,000 a YEAR for LIFE"
+                    break;
+                case 4: 
+                    if(lucky == winningLucky) {
+                        x = "$5,000"
+                        break;
+                    }  
+                    x = "$200"
+                    break;
+                case 3: 
+                    if (lucky == winningLucky) {
+                        x = "$150"
+                        break;
+                    }  
+                    x = "$20"
+                    break;
+                case 2: 
+                    if (lucky == winningLucky) {
+                        x = "$25"
+                        break;
+                    } 
+                    x = "$3"
+                    break;
+                case 1: 
+                    if (lucky == winningLucky) {
+                        x = "$6"
+                        break;
+                    }     
+                    x = "$0"
+                    break;
+                case 0: 
+                    if (lucky == winningLucky) {
+                        x = "$4"
+                        break;
+                    }
+                    x = "$0"
+                    break;
+                default: x = "$0"
+            }
+            document.getElementById('winnings').innerHTML += " " + x;
+        </script>
+    </body>
+</html>
