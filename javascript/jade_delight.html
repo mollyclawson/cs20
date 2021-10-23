@@ -34,7 +34,7 @@ function makeSelect(name, minRange, maxRange)
 </script>
 
 <h1>Jade Delight</h1>
-<form>
+<form onsubmit="return validate()">
 
 <p>First Name: <input type="text"  name='fname' /></p>
 <p>Last Name*:  <input type="text"  name='lname' /></p>
@@ -76,17 +76,90 @@ function makeSelect(name, minRange, maxRange)
 <p>Total: $ <input type="text"  name='total' id="total" />
 </p>
 
-<input type = "button" value = "Submit Order" />
+<input type = "submit" value = "Submit Order" />
 
 </form>
 </body>
 <script language="javascript">
+
+	function finishOrder() {
+		msg = "Thank you for your order! \nYour order: \n";
+		no_items = true;
+		for (i = 0; i < menuItems.length; i++) {
+			quantity = document.getElementsByName("quan"+i)[0].value;
+			if (parseInt(quantity)) {
+				msg+= quantity + " " + menuItems[i].name +"\n";
+				no_items = false;
+			}
+		}
+		if (no_items) {
+			alert("You must order at least one item.");
+			return false;
+		}
+		msg+="Your total is: $" + document.forms[0].total.value +"\n";
+		msg+="Your order will be ready at " + calculateTime();
+		alert(msg);
+		return true;
+	}
+
+	function calculateTime() {
+		const date = new Date();
+		time = date.getTime();
+		console.log(date.getHours());
+		console.log(date.getMinutes());
+		hours = date.getHours() % 12;
+		console.log(document.forms[0].p_or_d.value);
+		if (document.forms[0].p_or_d.value == "pickup") {
+			minutes = (date.getMinutes() + 15) % 60;
+		} else {
+			minutes = (date.getMinutes() + 30) % 60;
+		}
+		console.log(hours);
+		console.log(minutes);
+		return(hours + ":" + minutes)
+	}
+
+	function validate() {
+		if (document.forms[0].lname.value == "") {
+			alert("Last name is required");
+			document.forms[0].lname.focus();
+			return false;
+		}
+		if (document.forms[0].phone.value == "") {
+			alert("Phone number is required");
+			document.forms[0].phone.focus();
+			return false;
+		}
+		var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+		if (! (re.test(document.forms[0].phone.value))) {
+			msg = "Phone number is invalid.\n";
+			msg+= "Valid phone number formats include:\n";
+			msg+= "(123)456-7890 \n 123-456-7890 \n 1234567890 \n";
+			alert(msg);
+			document.forms[0].phone.focus();
+			document.forms[0].phone.select();
+			return false;
+		}
+		if (document.forms[0].p_or_d.value == "delivery") {
+			if(document.forms[0].street.value == "") {
+				alert("Street is required for delivery");
+				document.forms[0].street.focus();
+				return false;
+			}
+			if(document.forms[0].city.value == "") {
+				alert("City is required for delivery");
+				document.forms[0].city.focus();
+				return false;
+			}
+		}
+		return finishOrder();
+	}
+
 	window.onload = function() {
-		alert("Hello world!");
 		for (i = 0; i < 5; i++) {
 			addCalculationEvent("quan"+i);
 		}	
-		addShowAddressEvent("p_or_d");	
+		addShowAddressEvent("p_or_d");
 	}
 
 	function addCalculationEvent(name) {
@@ -95,8 +168,27 @@ function makeSelect(name, minRange, maxRange)
 			index = parseInt(name[4])
 			textObj = document.getElementsByName('cost')[index];
 			textObj.value = (this.value * menuItems[index].cost).toFixed(2);
+			calculateTotals();
 			}
 		}
+
+	function calculateTotals() {
+		subtotal = 0;
+		costs = document.getElementsByName('cost');
+		console.log(costs);
+		for (i = 0; i < 5; i++) {
+			value = parseFloat(costs[i].value);
+			if (isNaN(value)) {
+				continue;
+			}
+			subtotal+=value;
+		}
+		document.forms[0].subtotal.value = subtotal.toFixed(2);
+		tax = (subtotal * .0625).toFixed(2);
+		document.forms[0].tax.value = tax;
+		total = (parseFloat(tax) + parseFloat(subtotal));
+		document.forms[0].total.value = total.toFixed(2);
+	}
 	
 	function addShowAddressEvent(name) {
 		radios = document.getElementsByName(name);
@@ -113,7 +205,6 @@ function makeSelect(name, minRange, maxRange)
 				}
 			}
 		}
-	}
-	
+	}	
 </script>
 </html>
