@@ -1,0 +1,59 @@
+[
+    {
+        "name": "Rusty",
+        "type": "dog",
+        "breed": "Beagle",
+        "age": 6,
+        "gender": "male",
+        "procedures": [
+            "rabies vaccine",
+            "tooth pulled"
+        ],
+        "adoptive family": {
+            "name": {
+                "first": "Jane",
+                "last": "Smith"
+            },
+            "town": "Medford",
+            "children": 0,
+            "other_pets": true
+        }
+    },
+    {
+        "name": "Ralph",
+        "type": "cat",
+        "breed": "Tabby",
+        "age": 2,
+        "gender": "male",
+        "procedures": [],
+        "adoptive family": {
+            "name": {
+                "first": "Richard",
+                "last": "Black"
+            },
+            "town": "Boston",
+            "children": 0,
+            "other_pets": false
+        }
+    },
+    {
+        "name": "Shaggy",
+        "type": "dog",
+        "breed": "German Shephard",
+        "age": 1,
+        "gender": "male",
+        "procedures": [
+            "rabies vaccine",
+            "neutered"
+        ],
+        "adoptive family": {
+            "name": {
+                "first": "Sharon",
+                "last": "Penn"
+            },
+            "town": "Medford",
+            "children": 2,
+            "other_pets": true
+        }
+    }
+]

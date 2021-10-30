@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script language="javascript">
+        animal = {
+            "name": "Rusty",
+            "type": "dog",
+            "breed": "Beagle",
+            "age": 6,
+            "gender": "male",
+            toJSON(){return this.name + this.age;}
+        }
+
+        // strAnimal = JSON.stringify(animal);
+        // document.write(strAnimal);
+        // objAnimal = JSON.parse(strAnimal);
+        // document.write("<br>Animal name is " + objAnimal["name"]);
+        // document.write("<br>Animal type is " + objAnimal.type);
+        strAnimal = JSON.stringify(animal);
+        document.write(strAnimal);
+        
+    </script>
+
+</body>
+
+</html>

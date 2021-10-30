@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Song List: JSON</title>
+        <meta charset="utf-8"/>
+        <script>
+            function loadData () {
+                /* Step 1: Make instance of XHR object...
+			    ...to make HTTP request after page is loaded*/
+			    request = new XMLHttpRequest();
+			    console.log("1: created request");
+
+                // Step 2: Open the JSON file at remote location
+			    request.open("GET", "http://www.secretcheese.com/comp20/demo/location.json", true);
+                console.log("2: open success");
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Hello World</h1>
+
+
+
+    </body>
+</html>

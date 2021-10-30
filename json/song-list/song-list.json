@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Blank Space",
+        "artist": "Taylor Swift",
+        "genre": "pop",
+        "year": 2014
+    },
+    {
+        "title": "Wildest Dreams",
+        "artist": "Taylor Swift",
+        "genre": "pop",
+        "year": 2014
+    },
+    {
+        "title": "Look What You Made Me Do",
+        "artist": "Taylor Swift",
+        "genre": "pop",
+        "year": 2017
+    },
+    {
+        "title": "Halo",
+        "artist": "Beyoncé",
+        "genre": "pop",
+        "year": 2008
+    },
+    {
+        "title": "Back in Black",
+        "artist": "ACDC",
+        "genre": "rock",
+        "year": 1980
+    }, 
+    {
+        "title": "Dreams",
+        "artist": "Fleetwood Mac",
+        "genre": "rock",
+        "year": 1977
+    }, 
+    {
+        "title": "Don't Stop Me Now",
+        "artist": "Queen",
+        "genre": "rock",
+        "year": 1979
+    }, 
+    {
+        "title": "I'm Still Standing",
+        "artist": "Elton John",
+        "genre": "rock",
+        "year": 1983
+    }, 
+    {
+        "title": "Rehab",
+        "artist": "Amy Winehouse",
+        "genre": "soul",
+        "year": 2006
+    }, 
+    {
+        "title": "(Sittin' On) The Dock of the Bay",
+        "artist": "Otis Redding",
+        "genre": "soul",
+        "year": 1968
+    }
+]
