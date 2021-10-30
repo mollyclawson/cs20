@@ -5,19 +5,81 @@
         <meta charset="utf-8"/>
         <script>
             function loadData () {
+
                 /* Step 1: Make instance of XHR object...
 			    ...to make HTTP request after page is loaded*/
 			    request = new XMLHttpRequest();
 			    console.log("1: created request");
 
                 // Step 2: Open the JSON file at remote location
-			    request.open("GET", "http://www.secretcheese.com/comp20/demo/location.json", true);
+			    request.open("GET", "http://mollyclawson.github.io/cs20/json/song-list/song-list.json", true);
                 console.log("2: open success");
+
+                request.onreadystatechange = function() {
+                    console.log("3:  event fired");
+                
+                    // Step 3: set up callback for when HTTP response is returned (i.e., you get the JSON file back)
+                    if (request.readyState == 4 && request.status == 200) {
+
+                        // Step 5: when we get all the JSON data back, parse it and use it
+                        console.log("5:  data is ready");
+                        theData = request.responseText;
+                        returnHTML = theData;
+                        data = JSON.parse(theData);
+                        
+
+                        returnHTML += "<br><br><br>";
+                        for (i = 0; i < 10; i++) {
+                            returnHTML += data[i]["title"] + "<br>";
+                            returnHTML += "Artist: " + data[i]["artist"] + "<br>";
+                            returnHTML += "Genre: " + data[i]["genre"] + "<br>";
+                            returnHTML += "Released In " + data[i]["year"] + "<br><br>";
+                        }
+                        
+                        document.getElementById('data').innerHTML = returnHTML;
+                    }
+                    else if (request.readyState == 4 && request.status != 200) {
+                        document.getElementById("data").innerHTML = "Whoops, something went terribly wrong!";
+                    }
+                    else if (request.readyState == 3) {
+                        console.log("6:  ready state 3- request received,data being sent");
+                        document.getElementById("data").innerHTML = "Come back soon!";
+                    }
+			    }//end on readystate change
+                
+                // Step 4: fire off the HTTP request
+			    request.send();
+			    console.log("4 request sent");
+            }
+            function displayFiltered () {
+                selected = document.getElementById("genre").value;
+                returnHTML = "<br>"
+                for (i = 0; i < 10; i++) {
+                    console.log(data[i]["genre"]);
+                    if (data[i]["genre"] == selected) {
+                            returnHTML += data[i]["title"] + "<br>";
+                            returnHTML += "Artist: " + data[i]["artist"] + "<br>";
+                            returnHTML += "Genre: " + data[i]["genre"] + "<br>";
+                            returnHTML += "Released In " + data[i]["year"] + "<br><br>";
+                    }
+                }
+                document.getElementById('filtered').innerHTML = returnHTML;
             }
         </script>
     </head>
-    <body>
-        <h1>Hello World</h1>
+    <body onload="loadData()">
+        <h1>JSON Song List</h1>
+        <h2>The Data</h2>
+        <div id="data"></div>
+        <h2>Filtering by Genre</h2>
+        <select name="genre" id="genre" onchange="displayFiltered()">
+            <option value="none">Choose a genre</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="soul">Soul</option>
+        </select>
+        <div id="filtered"></div>
+
 
 
 
