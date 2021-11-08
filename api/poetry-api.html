@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>  
+    <head>  
+        <title>API Fun: Poetry</title>
+        <style type="text/css">
+            body, html {max-width: 800px; margin: 0 auto;}
+
+            h1 {text-align: center;}
+        </style>
+            <script>
+                function getPoems() {
+                    request = new XMLHttpRequest();
+                    console.log("1 - request object created");
+    
+                    request.open("GET", "https://poetrydb.org/author/Edgar Allan Poe", true)
+                    console.log("2 - opened request file");
+    
+                    request.onreadystatechange = function() {
+                        console.log("3 - readystatechange event fired.");
+                        if (request.readyState == 4 && request.status == 200) {
+                            // Step 5: wait for done + success
+                            console.log("5 - response received");
+                            result = request.responseText;
+                            poems = JSON.parse(result);
+                            console.log(poems);
+                            document.getElementById("data").innerHTML = "";
+                            for (i = 0; i < poems.length; i++) {
+                                document.getElementById("data").innerHTML +="<br><br>Poem Title: " + poems[i]["title"]; 
+                                document.getElementById("data").innerHTML +="<br>Author: " + poems[i]["author"];
+                                document.getElementById("data").innerHTML +="<br><br>" + poems[i]["lines"].join("<br>"); 
+                            }
+    
+                        } else if (request.readyState == 4 && request.status != 200) {
+                            document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+                        } else if (request.readyState == 3) {
+                            document.getElementById("data").innerHTML = "Too soon!  Try again";
+    
+                        }
+                    }
+                    // Step 4: fire off the HTTP request
+                    request.send();
+                    console.log("4 - Request sent");
+                }
+            </script>    
+    </head>
+    <body onload="getPoems()">
+        <h1>API Fun: PoetryDB</h1>
+        <div>
+            The API I'm using is called <strong>PoetryDB</strong>. It is a free API made for poets 
+            and poetry-readers that holds thousands of famous English poems. One can query the database 
+            via this API by poem title or author. The data comes back to the user in a JSON format. 
+        </div>
+        <br>
+        <div>
+            I found this API through its GitHub repository. I'm interested in reading and literature, 
+            so I decided to search for a literature-based API. When I made that search, one of the 
+            easiest-to-understand APIs was PoetryDB, because the README file was right there on GitHub where I
+            could read about the API and how it is used. 
+            <a href="https://github.com/thundercomb/poetrydb#readme" target="_blank">Here</a> is the link to the page I 
+            came upon. 
+        </div>
+        <div>
+            I used the "author" option to search by author. I searched for one of the most iconic 
+            American poets, Edgar Allan Poe, and display all of the poems that the API returned 
+            that he authored. 
+        </div>
+        <br>
+        <div>
+            Two applications where this API would be helpful:
+            <ol>
+                <li>A school could use this API to display a new poem every day on their site.</li>
+                <li>A library could use this API to get and display open-source poetry to their visitors.</li>
+            </ol>
+        </div>
+
+
+        <div id="data">
+        </div>
+        
+    </body>
+</html>
