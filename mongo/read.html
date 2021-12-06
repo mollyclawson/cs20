@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        Hello world
+        <script language="javascript">
+            const MongoClient = require('mongodb').MongoClient;
+            const url = "mongodb+srv://mollyclaw:madison1017@cluster0.yqtdj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";  // connection string goes here
+
+            MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
+                if(err) { return console.log(err); return;}
+                
+                var dbo = db.db("stock-ticker");
+                var collection = dbo.collection("companies");
+                
+                console.log("Success!");
+                db.close();
+            
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://mollyclaw:Whiplash2015@cluster0.yqtdj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; 
+var port = process.env.PORT || 3000;
 
 var http = require('http');
 http.createServer(function (req, res) {
@@ -30,5 +31,5 @@ http.createServer(function (req, res) {
       
       });
 
-}).listen(8080);
+}).listen(port);
 
