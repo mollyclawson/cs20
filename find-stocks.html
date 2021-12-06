@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stock Ticker App</title>
+        <script language="javascript">
+            function displayStocks () {
+                alert("The form was submitted")
+                var value = document.getElementById("input").value;
+                alert("The value was " + value);
+                var type = document.getElementById("select").options[select.selectedIndex].value;
+                alert("Type is " + type);
+
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Stock Ticker App</h1>
+        <h2>
+            Insert either a stock ticker symbol or the name of a company, and I'll provide 
+            a list of matching companies. 
+        </h2>
+        <form method="POST" action="find-stocks.js">
+            <select id="select">
+                <option>Select One</option>
+                <option value="stock">Stock Ticker</option>
+                <option value="company">Company Name</option>
+            </select>
+            <input type="text" name="input" id="input"><br><br>
+            <input type="submit">
+        </form>
+        
+
+
+    </body>
+</html>
