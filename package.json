@@ -4,16 +4,19 @@
   "description": "my sample node app",
   "main": "hello.js",
   "scripts": {
-  "start": "node hello.js"
-},
+    "start": "node hello.js"
+  },
   "repository": {
-  "type": "git",
-  "url": ""
-},
+    "type": "git",
+    "url": ""
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
-  "url": ""
-},
-  "homepage": ""
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "mongo": "^0.1.0"
+  }
 }

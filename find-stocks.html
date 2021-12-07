@@ -19,7 +19,7 @@
             Insert either a stock ticker symbol or the name of a company, and I'll provide 
             a list of matching companies. 
         </h2>
-        <form method="POST" action="find-stocks.js">
+        <form method="POST" onsubmit="displayStocks()">
             <select id="select">
                 <option>Select One</option>
                 <option value="stock">Stock Ticker</option>
@@ -28,8 +28,5 @@
             <input type="text" name="input" id="input"><br><br>
             <input type="submit">
         </form>
-        
-
-
     </body>
 </html>
